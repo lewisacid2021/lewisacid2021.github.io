@@ -7,8 +7,8 @@ tags: [coding]
 description: >-
     A concise guide to sliding window techniques — fixed and variable size windows, key patterns, and common tricks for solving array and substring problems in O(n).
 image:
-  path: /assets/img/posts/slidingwindow.png
-  lqip: /assets/img/posts/slidingwindow.png
+  path: /assets/img/posts/slidingwindow.gif
+  lqip: /assets/img/posts/slidingwindow.gif
   alt: Typical process of Sliding Window 
 ---
 
@@ -37,6 +37,8 @@ image:
 **单调队列**：维护区间最大/最小值。
 
 **双指针 + 计数器**：在固定长度基础上，扩展到模式匹配类问题。
+
+---
 
 ### 例题1：[1423. 可获得的最大点数](https://leetcode.cn/problems/maximum-points-you-can-obtain-from-cards/)
 
@@ -89,7 +91,7 @@ public:
     }
 };
 ```
-
+---
 
 ## 二、不定长滑动窗口
 
@@ -133,6 +135,7 @@ public:
 
 - 最小区间问题。
 
+---
 
 ### 例题2：[1658. 将 x 减到 0 的最小操作数](https://leetcode.cn/problems/minimum-operations-to-reduce-x-to-zero/)
 
@@ -185,6 +188,7 @@ public:
 };
 ```
 
+---
 
 ### 2.3 求子数组个数
 
@@ -218,6 +222,7 @@ public:
 
 统计包含某些字符/条件的子串数。
 
+---
 
 ### 例题3：[2537. 统计好子数组的数目](https://leetcode.cn/problems/count-the-number-of-good-subarrays/)
 
@@ -269,6 +274,7 @@ public:
 };
 ```
 
+---
 
 ### 例题4：[992. K 个不同整数的子数组](https://leetcode.cn/problems/subarrays-with-k-different-integers/)
 
@@ -335,6 +341,7 @@ private:
     }
 };
 ```
+---
 
 ## 三、解题时的核心思路
 
