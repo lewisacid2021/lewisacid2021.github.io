@@ -1,17 +1,15 @@
 ---
-title: 科学编程之滑动窗口 Coding Scientifically - Sliding Window
+title: Mastering Sliding Window: Patterns, Tricks, and Real LeetCode Examples
 author: lewisacid2021
 date: 2025-09-19 22:45:00 +0800
 categories: [Blogging,Algorithm]
 tags: [coding]
-description: Universal Solution of Sliding Window
+description: A concise guide to sliding window techniques — fixed and variable size windows, key patterns, and common tricks for solving array and substring problems in O(n).
 render_with_liquid: false
 ---
 
-# 科学编程之滑动窗口 Coding Scientifically - Sliding Window
-
-## 滑动窗口题型与解法总结
-### 一、定长滑动窗口
+# 滑动窗口题型与解法总结
+## 一、定长滑动窗口
 
 窗口大小固定为 `k`，典型套路：
 
@@ -37,7 +35,9 @@ render_with_liquid: false
 
 **双指针 + 计数器**：在固定长度基础上，扩展到模式匹配类问题。
 
-**例题：[1423. 可获得的最大点数](https://leetcode.cn/problems/maximum-points-you-can-obtain-from-cards/)**
+---
+
+### 例题1：[1423. 可获得的最大点数](https://leetcode.cn/problems/maximum-points-you-can-obtain-from-cards/)**
 
 几张卡牌 **排成一行**，每张卡牌都有一个对应的点数。点数由整数数组 `cardPoints` 给出。
 
@@ -47,26 +47,31 @@ render_with_liquid: false
 
 给你一个整数数组 `cardPoints` 和整数 `k`，请你返回可以获得的**最大点数**。
 
-**参考思路** 来源：[灵茶山艾府](https://leetcode.cn/u/endlesscheng/)
+### 参考思路 来源：[灵茶山艾府](https://leetcode.cn/u/endlesscheng/)
+
 拿走 *k* 张，剩下 *n−k* 张。这里 *n* 是 *cardPoints* 的长度。
 
-由于拿走的点数和 + 剩下的点数和 = 所有点数和 = 常数，所以为了最大化拿走的点数和，应当****最小化剩下的点数和**。
+由于拿走的点数和 + 剩下的点数和 = 所有点数和 = 常数，所以为了最大化拿走的点数和，应当**最小化剩下的点数和**。
 
-由于只能从开头或末尾拿牌，所以最后剩下的牌必然是连续的。
+由于只能从开头或末尾拿牌，所以最后剩下的牌必然是**连续**的。
 
 至此，问题变成：
 
 - 计算长为 *n−k* 的连续子数组和的最小值。
+
 这可以用**定长滑动窗口**解决。
 
-设 *m=n−k*，计算第一个长为 *m* 的子数组元素和，即 *s=cardPoints[0]+cardPoints[1]+⋯+cardPoints[m−1]*。初始化 *minS=s*。
-计算下一个子数组的元素和，即 *s′=cardPoints[1]+cardPoints[2]+⋯+cardPoints[m]*。由于 *s′−s=cardPoints[m]−cardPoints[0]*，所以只需要把 *s* 增加 *cardPoints[m]−cardPoints[0]*，就可以 O(1) 算出下一个子数组的元素和。
-依照这个方法，从 *i=m* 开始向后枚举，每次把 *s* 增加 *cardPoints[i]−cardPoints[i−m]*，然后用 *s* 更新 *minS* 的最小值。
-最后，用 *cardPoints* 的元素和，减去 *minS*，就得到了答案。
+1. 设 *m=n−k*，计算第一个长为 *m* 的子数组元素和，即 *s=cardPoints[0]+cardPoints[1]+⋯+cardPoints[m−1]*。初始化 *minS=s*。
 
-**算法实现**
+2. 计算下一个子数组的元素和，即 *s′=cardPoints[1]+cardPoints[2]+⋯+cardPoints[m]*。由于 *s′−s=cardPoints[m]−cardPoints[0]*，所以只需要把 *s* 增加 *cardPoints[m]−cardPoints[0]*，就可以 O(1) 算出下一个子数组的元素和。
 
-```
+3. 依照这个方法，从 *i=m* 开始向后枚举，每次把 *s* 增加 *cardPoints[i]−cardPoints[i−m]*，然后用 *s* 更新 *minS* 的最小值。
+
+4. 最后，用 *cardPoints* 的元素和，减去 *minS*，就得到了答案。
+
+### 算法实现
+
+```cpp
 class Solution {
 public:
     int maxScore(vector<int>& cardPoints, int k) {
@@ -83,12 +88,13 @@ public:
 };
 ```
 
+---
 
-### 二、不定长滑动窗口
+## 二、不定长滑动窗口
 
 窗口大小不固定，通过双指针（left/right）动态调整，常见于“满足/不满足某条件”。
 
-#### 2.1 越短越合法 → 求最长/最大
+### 2.1 越短越合法 → 求最长/最大
 
 思路：条件限制“越短越容易满足”，所以窗口要尽量扩展。
 
@@ -108,7 +114,7 @@ public:
 
 - 允许一定次数修改/删除的最长子数组。
 
-#### 2.2 越长越合法 → 求最短/最小
+### 2.2 越长越合法 → 求最短/最小
 
 思路：条件限制“越长越容易满足”，所以窗口要尽量收缩。
 
@@ -126,13 +132,15 @@ public:
 
 - 最小区间问题。
 
-**例题：[1658. 将 x 减到 0 的最小操作数](https://leetcode.cn/problems/minimum-operations-to-reduce-x-to-zero/)**
+---
+
+### 例题2：[1658. 将 x 减到 0 的最小操作数](https://leetcode.cn/problems/minimum-operations-to-reduce-x-to-zero/)**
 
 给你一个整数数组 `nums` 和一个整数 `x` 。每一次操作时，你应当移除数组 `nums` 最左边或最右边的元素，然后从 `x` 中减去该元素的值。请注意，需要 修改 数组以供接下来的操作使用。
 
 如果可以将 `x` **恰好** 减到 `0` ，返回 **最小操作数** ；否则，返回 -1 。
 
-**参考思路** 来源：[灵茶山艾府](https://leetcode.cn/u/endlesscheng/)
+### 参考思路 来源：[灵茶山艾府](https://leetcode.cn/u/endlesscheng/)
 
 移除的是 *nums* 最左边或最右边的元素，那么剩下的元素是什么？是 *nums* 的连续子数组。
 
@@ -148,9 +156,9 @@ public:
 
 ⚠注意：子数组的长度可以是 0，所以下面代码初始化 *ans*=−1。如果初始化 *ans*=0，就无法区分是否真的存在符合要求的子数组。
 
-**算法实现**
+### 算法实现
 
-```
+```cpp
 class Solution {
 public:
     int minOperations(vector<int>& nums, int x) {
@@ -175,23 +183,43 @@ public:
 };
 ```
 
-#### 2.3 求子数组个数
+---
+
+### 2.3 求子数组个数
 
 技巧在于 计数方式。
 
-1. 越短越合法
+#### 2.3.1 越短越合法
 
 当窗口 `[left, right]` 合法时，说明 `[left, right]`, `[left+1, right]`, ..., `[right, right]` 全部合法。
 
 增加 `right - left + 1` 个答案。
 
-2. 越长越合法
+#### 2.3.2 越长越合法
 
 当窗口 `[left, right]` 不合法时，最后一次合法是 `[0..left-1, right]`。
 
 增加 `left`个答案。
 
-**例题：[2537. 统计好子数组的数目](https://leetcode.cn/problems/count-the-number-of-good-subarrays/)**
+#### 2.3.3 恰好型
+
+转换成两个“至少/至多”问题：
+
+例如：`count(和 ≥ k) - count(和 ≥ k+1)`。
+
+或者 `count(和 ≤ k) - count(和 ≤ k-1)`。
+
+可以写成通用 `solve(limit)` 函数，然后调用两次求差。
+
+应用：
+
+统计和 < k / 和 = k 的子数组数；
+
+统计包含某些字符/条件的子串数。
+
+---
+
+### 例题3：[2537. 统计好子数组的数目](https://leetcode.cn/problems/count-the-number-of-good-subarrays/)**
 
 给你一个整数数组 `nums` 和一个整数 `k` ，请你返回 `nums` 中 好 子数组的数目。
 
@@ -199,23 +227,27 @@ public:
 
 **子数组** 是原数组中一段连续 **非空** 的元素序列。
 
-**参考思路** 来源：[灵茶山艾府](https://leetcode.cn/u/endlesscheng/)
+### 参考思路 来源：[灵茶山艾府](https://leetcode.cn/u/endlesscheng/)
 
 核心思路：
 
 如果窗口中有 *c* 个元素 *x*，再进来一个 *x*，会新增 *c* 个相等数对。
+
 如果窗口中有 *c* 个元素 *x*，再去掉一个 *x*，会减少 *c−1* 个相等数对。
+
 用一个哈希表 *cnt* 维护子数组（窗口）中的每个元素的出现次数，以及相同数对的个数 *pairs*。
 
 外层循环：从小到大枚举子数组右端点 *right*。现在准备把 *x=nums[right]* 移入窗口，那么窗口中有 *cnt[x]* 个数和 *x* 相同，所以 *pairs* 会增加 *cnt[x]*。然后把 *cnt[x]* 加一。
 
 内层循环：如果发现 *pairs≥k*，说明子数组符合要求，右移左端点 *left*，先把 *cnt[nums[left]]* 减少一，然后把 *pairs* 减少 *cnt[nums[left]]*。
 
-内层循环结束后，*[left,right]* 这个子数组是不满足题目要求的，但在退出循环之前的最后一轮循环，*[left−1,right]* 是满足题目要求的。由于子数组越长，越能满足题目要求，所以除了 *[left−1,right]*，还有 *[left−2,right]*,*[left−3,right]*,…,*[0,right]* 都是满足要求的。也就是说，当右端点固定在 *right* 时，左端点在 *0,1,2,…,left−1* 的所有子数组都是满足要求的，这一共有 *left* 个。
+内层循环结束后，*[left,right]* 这个子数组是不满足题目要求的，但在退出循环之前的最后一轮循环，*[left−1,right]* 是满足题目要求的。由于子数组越长，越能满足题目要求，所以除了 *[left−1,right]*，还有 *[left−2,right]*,*[left−3,right]*,…,*[0,right]* 都是满足要求的。
 
-**算法实现**
+也就是说，当右端点固定在 *right* 时，左端点在 *0,1,2,…,left−1* 的所有子数组都是满足要求的，这一共有 *left* 个。
 
-```
+### 算法实现
+
+```cpp
 class Solution {
 public:
     long long countGood(vector<int>& nums, int k) {
@@ -235,33 +267,19 @@ public:
 };
 ```
 
- 
-3. 恰好型
+---
 
-转换成两个“至少/至多”问题：
-
-例如：`count(和 ≥ k) - count(和 ≥ k+1)`。
-
-或者 `count(和 ≤ k) - count(和 ≤ k-1)`。
-
-可以写成通用 `solve(limit)` 函数，然后调用两次求差。
-
-应用：
-
-统计和 < k / 和 = k 的子数组数；
-
-统计包含某些字符/条件的子串数。
-
-**例题：[992. K 个不同整数的子数组](https://leetcode.cn/problems/subarrays-with-k-different-integers/)**
+### 例题4：[992. K 个不同整数的子数组](https://leetcode.cn/problems/subarrays-with-k-different-integers/)**
 
 给定一个正整数数组 `nums`和一个整数 `k`，返回 `nums` 中 「好子数组」 的数目。
 
 如果 `nums` 的某个子数组中不同整数的个数恰好为 `k`，则称 `nums` 的这个连续、不一定不同的子数组为 「好子数组 」。
 
 - 例如，`[1,2,3,1,2]` 中有 `3` 个不同的整数：`1`，`2`，以及 `3`。
+
 **子数组** 是数组的 **连续** 部分。
 
-**参考思路** 来源：[寂](https://leetcode.cn/u/zen-poincarer1r/)
+### 参考思路 来源：[寂](https://leetcode.cn/u/zen-poincarer1r/)
 
 我们要求的是恰好有 *k* 个不同整数的子数组数量。
 
@@ -286,9 +304,9 @@ public:
 记 `f(k)` 表示「至多 k 个不同整数」的子数组数量，答案就是
 `f(k) − f(k−1)`。
 
-**算法实现**
+### 算法实现
 
-```
+```cpp
 class Solution {
 public:
     int subarraysWithKDistinct(vector<int>& nums, int k) {
@@ -316,7 +334,7 @@ private:
 };
 ```
 
-### 三、解题时的核心思路
+## 三、解题时的核心思路
 
 1. 识别题型：
 
@@ -340,5 +358,5 @@ private:
 
 - 差分技巧（恰好型 = 至少型差分）。
 
-## 👉 总结一句话：
+# 👉 总结一句话：
 滑动窗口的本质是**维护一个动态区间**，利用条件的**单调性**来缩放窗口，实现 O(n) 的扫描。
