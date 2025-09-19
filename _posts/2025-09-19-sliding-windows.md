@@ -4,7 +4,8 @@ author: lewisacid2021
 date: 2025-09-19 22:45:00 +0800
 categories: [Blogging,Algorithm]
 tags: [coding]
-description: A concise guide to sliding window techniques — fixed and variable size windows, key patterns, and common tricks for solving array and substring problems in O(n).
+description: >-
+    A concise guide to sliding window techniques — fixed and variable size windows, key patterns, and common tricks for solving array and substring problems in O(n).
 render_with_liquid: false
 ---
 
@@ -35,7 +36,7 @@ render_with_liquid: false
 
 **双指针 + 计数器**：在固定长度基础上，扩展到模式匹配类问题。
 
-### 例题1：[1423. 可获得的最大点数](https://leetcode.cn/problems/maximum-points-you-can-obtain-from-cards/)**
+### 例题1：[1423. 可获得的最大点数](https://leetcode.cn/problems/maximum-points-you-can-obtain-from-cards/)
 
 几张卡牌 **排成一行**，每张卡牌都有一个对应的点数。点数由整数数组 `cardPoints` 给出。
 
@@ -45,13 +46,14 @@ render_with_liquid: false
 
 给你一个整数数组 `cardPoints` 和整数 `k`，请你返回可以获得的**最大点数**。
 
-### 参考思路 来源：[灵茶山艾府](https://leetcode.cn/u/endlesscheng/)
+#### 参考思路 来源：[灵茶山艾府](https://leetcode.cn/u/endlesscheng/)
 
 拿走 *k* 张，剩下 *n−k* 张。这里 *n* 是 *cardPoints* 的长度。
 
 由于拿走的点数和 + 剩下的点数和 = 所有点数和 = 常数，所以为了最大化拿走的点数和，应当**最小化剩下的点数和**。
 
-由于只能从开头或末尾拿牌，所以最后剩下的牌必然是**连续**的。
+> 由于只能从开头或末尾拿牌，所以最后剩下的牌必然是**连续**的。
+{: .prompt-info }
 
 至此，问题变成：
 
@@ -67,7 +69,7 @@ render_with_liquid: false
 
 4. 最后，用 *cardPoints* 的元素和，减去 *minS*，就得到了答案。
 
-### 算法实现
+#### 算法实现
 
 ```cpp
 class Solution {
@@ -130,13 +132,13 @@ public:
 - 最小区间问题。
 
 
-### 例题2：[1658. 将 x 减到 0 的最小操作数](https://leetcode.cn/problems/minimum-operations-to-reduce-x-to-zero/)**
+### 例题2：[1658. 将 x 减到 0 的最小操作数](https://leetcode.cn/problems/minimum-operations-to-reduce-x-to-zero/)
 
 给你一个整数数组 `nums` 和一个整数 `x` 。每一次操作时，你应当移除数组 `nums` 最左边或最右边的元素，然后从 `x` 中减去该元素的值。请注意，需要 修改 数组以供接下来的操作使用。
 
 如果可以将 `x` **恰好** 减到 `0` ，返回 **最小操作数** ；否则，返回 -1 。
 
-### 参考思路 来源：[灵茶山艾府](https://leetcode.cn/u/endlesscheng/)
+#### 参考思路 来源：[灵茶山艾府](https://leetcode.cn/u/endlesscheng/)
 
 移除的是 *nums* 最左边或最右边的元素，那么剩下的元素是什么？是 *nums* 的连续子数组。
 
@@ -150,9 +152,11 @@ public:
 
 最后答案为 *nums* 的长度减去最长子数组的长度。
 
-⚠注意：子数组的长度可以是 0，所以下面代码初始化 *ans*=−1。如果初始化 *ans*=0，就无法区分是否真的存在符合要求的子数组。
+> 子数组的长度可以是 0，所以下面代码初始化 *ans*=−1。如果初始化 *ans*=0，就无法区分是否真的存在符合要求的子数组。
+{: .prompt-info }
 
-### 算法实现
+
+#### 算法实现
 
 ```cpp
 class Solution {
@@ -213,15 +217,17 @@ public:
 统计包含某些字符/条件的子串数。
 
 
-### 例题3：[2537. 统计好子数组的数目](https://leetcode.cn/problems/count-the-number-of-good-subarrays/)**
+### 例题3：[2537. 统计好子数组的数目](https://leetcode.cn/problems/count-the-number-of-good-subarrays/)
 
 给你一个整数数组 `nums` 和一个整数 `k` ，请你返回 `nums` 中 好 子数组的数目。
 
 一个子数组 `arr` 如果有 至少 `k` 对下标 `(i, j)` 满足 `i < j` 且 `arr[i] == arr[j]` ，那么称它是一个 **好** 子数组。
 
-**子数组** 是原数组中一段连续 **非空** 的元素序列。
+> **子数组** 是原数组中一段连续 **非空** 的元素序列。
+{: .prompt-info }
 
-### 参考思路 来源：[灵茶山艾府](https://leetcode.cn/u/endlesscheng/)
+
+#### 参考思路 来源：[灵茶山艾府](https://leetcode.cn/u/endlesscheng/)
 
 核心思路：
 
@@ -239,7 +245,7 @@ public:
 
 也就是说，当右端点固定在 *right* 时，左端点在 *0,1,2,…,left−1* 的所有子数组都是满足要求的，这一共有 *left* 个。
 
-### 算法实现
+#### 算法实现
 
 ```cpp
 class Solution {
@@ -262,7 +268,7 @@ public:
 ```
 
 
-### 例题4：[992. K 个不同整数的子数组](https://leetcode.cn/problems/subarrays-with-k-different-integers/)**
+### 例题4：[992. K 个不同整数的子数组](https://leetcode.cn/problems/subarrays-with-k-different-integers/)
 
 给定一个正整数数组 `nums`和一个整数 `k`，返回 `nums` 中 「好子数组」 的数目。
 
@@ -270,9 +276,10 @@ public:
 
 - 例如，`[1,2,3,1,2]` 中有 `3` 个不同的整数：`1`，`2`，以及 `3`。
 
-**子数组** 是数组的 **连续** 部分。
+> **子数组** 是数组的 **连续** 部分。
+{: .prompt-info }
 
-### 参考思路 来源：[寂](https://leetcode.cn/u/zen-poincarer1r/)
+#### 参考思路 来源：[寂](https://leetcode.cn/u/zen-poincarer1r/)
 
 我们要求的是恰好有 *k* 个不同整数的子数组数量。
 
@@ -297,7 +304,7 @@ public:
 记 `f(k)` 表示「至多 k 个不同整数」的子数组数量，答案就是
 `f(k) − f(k−1)`。
 
-### 算法实现
+#### 算法实现
 
 ```cpp
 class Solution {
