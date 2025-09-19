@@ -7,7 +7,7 @@ tags: [Coding]
 description: >-
     A concise guide to sliding window techniques — fixed and variable size windows, key patterns, and common tricks for solving array and substring problems in O(n).
 image:
-  path: /assets/img/posts/slidingwindow.gifC
+  path: /assets/img/posts/slidingwindow.gif
   lqip: /assets/img/posts/slidingwindow.gif
   alt: Typical process of Sliding Window 
 ---
