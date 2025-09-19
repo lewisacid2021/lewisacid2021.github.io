@@ -9,7 +9,6 @@ description: >-
 render_with_liquid: false
 ---
 
-# 滑动窗口题型与解法总结
 ## 一、定长滑动窗口
 
 窗口大小固定为 `k`，典型套路：
