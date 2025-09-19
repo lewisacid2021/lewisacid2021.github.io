@@ -6,7 +6,10 @@ categories: [Blogging,Algorithm]
 tags: [coding]
 description: >-
     A concise guide to sliding window techniques — fixed and variable size windows, key patterns, and common tricks for solving array and substring problems in O(n).
-render_with_liquid: false
+image:
+  path: /assets/img/posts/slidingwindow.png
+  lqip: /assets/img/posts/slidingwindow.png
+  alt: Typical process of Sliding Window 
 ---
 
 ## 一、定长滑动窗口
@@ -47,7 +50,7 @@ render_with_liquid: false
 
 #### 参考思路 来源：[灵茶山艾府](https://leetcode.cn/u/endlesscheng/)
 
-拿走 *k* 张，剩下 *n−k* 张。这里 *n* 是 *cardPoints* 的长度。
+拿走 `k` 张，剩下 `n−k` 张。这里 `n` 是 `cardPoints` 的长度。
 
 由于拿走的点数和 + 剩下的点数和 = 所有点数和 = 常数，所以为了最大化拿走的点数和，应当**最小化剩下的点数和**。
 
@@ -56,17 +59,17 @@ render_with_liquid: false
 
 至此，问题变成：
 
-- 计算长为 *n−k* 的连续子数组和的最小值。
+- 计算长为 `n−k` 的连续子数组和的最小值。
 
 这可以用**定长滑动窗口**解决。
 
-1. 设 *m=n−k*，计算第一个长为 *m* 的子数组元素和，即 *s=cardPoints[0]+cardPoints[1]+⋯+cardPoints[m−1]*。初始化 *minS=s*。
+1. 设 `m=n−k`，计算第一个长为 `m` 的子数组元素和，即 `s=cardPoints[0]+cardPoints[1]+⋯+cardPoints[m−1]`。初始化 `minS=s`。
 
-2. 计算下一个子数组的元素和，即 *s′=cardPoints[1]+cardPoints[2]+⋯+cardPoints[m]*。由于 *s′−s=cardPoints[m]−cardPoints[0]*，所以只需要把 *s* 增加 *cardPoints[m]−cardPoints[0]*，就可以 O(1) 算出下一个子数组的元素和。
+2. 计算下一个子数组的元素和，即 `s′=cardPoints[1]+cardPoints[2]+⋯+cardPoints[m]`。由于 `s′−s=cardPoints[m]−cardPoints[0]`，所以只需要把 `s` 增加 `cardPoints[m]−cardPoints[0]`，就可以 O(1) 算出下一个子数组的元素和。
 
-3. 依照这个方法，从 *i=m* 开始向后枚举，每次把 *s* 增加 *cardPoints[i]−cardPoints[i−m]*，然后用 *s* 更新 *minS* 的最小值。
+3. 依照这个方法，从 `i=m` 开始向后枚举，每次把 `s` 增加 `cardPoints[i]−cardPoints[i−m]`，然后用 `s` 更新 `minS` 的最小值。
 
-4. 最后，用 *cardPoints* 的元素和，减去 *minS*，就得到了答案。
+4. 最后，用 `cardPoints` 的元素和，减去 `minS`，就得到了答案。
 
 #### 算法实现
 
@@ -139,19 +142,19 @@ public:
 
 #### 参考思路 来源：[灵茶山艾府](https://leetcode.cn/u/endlesscheng/)
 
-移除的是 *nums* 最左边或最右边的元素，那么剩下的元素是什么？是 *nums* 的连续子数组。
+移除的是 `nums` 最左边或最右边的元素，那么剩下的元素是什么？是 `nums` 的连续子数组。
 
-移除的元素和 *x* + 剩余的元素和 = *nums* 的所有元素之和 *s*。
+移除的元素和 `x` + 剩余的元素和 = `nums` 的所有元素之和 `s`。
 
-所以剩余的元素和 = *s−x*。
+所以剩余的元素和 = `s−x`。
 
 问题变成：
 
-- 从 *nums* 中找最长的子数组（这样移除的数尽量少），满足子数组的元素和恰好等于 *s−x*。
+- 从 `nums` 中找最长的子数组（这样移除的数尽量少），满足子数组的元素和恰好等于 `s−x`。
 
-最后答案为 *nums* 的长度减去最长子数组的长度。
+最后答案为 `nums` 的长度减去最长子数组的长度。
 
-> 子数组的长度可以是 0，所以下面代码初始化 *ans*=−1。如果初始化 *ans*=0，就无法区分是否真的存在符合要求的子数组。
+> 子数组的长度可以是 0，所以下面代码初始化 `ans`=−1。如果初始化 `ans`=0，就无法区分是否真的存在符合要求的子数组。
 {: .prompt-info }
 
 
@@ -230,19 +233,19 @@ public:
 
 核心思路：
 
-如果窗口中有 *c* 个元素 *x*，再进来一个 *x*，会新增 *c* 个相等数对。
+如果窗口中有 `c` 个元素 `x`，再进来一个 `x`，会新增 `c` 个相等数对。
 
-如果窗口中有 *c* 个元素 *x*，再去掉一个 *x*，会减少 *c−1* 个相等数对。
+如果窗口中有 `c` 个元素 `x`，再去掉一个 `x`，会减少 `c−1` 个相等数对。
 
-用一个哈希表 *cnt* 维护子数组（窗口）中的每个元素的出现次数，以及相同数对的个数 *pairs*。
+用一个哈希表 `cnt` 维护子数组（窗口）中的每个元素的出现次数，以及相同数对的个数 `pairs`。
 
-外层循环：从小到大枚举子数组右端点 *right*。现在准备把 *x=nums[right]* 移入窗口，那么窗口中有 *cnt[x]* 个数和 *x* 相同，所以 *pairs* 会增加 *cnt[x]*。然后把 *cnt[x]* 加一。
+外层循环：从小到大枚举子数组右端点 `right`。现在准备把 `x=nums[right]` 移入窗口，那么窗口中有 `cnt[x]` 个数和 `x` 相同，所以 `pairs` 会增加 `cnt[x]`。然后把 `cnt[x]` 加一。
 
-内层循环：如果发现 *pairs≥k*，说明子数组符合要求，右移左端点 *left*，先把 *cnt[nums[left]]* 减少一，然后把 *pairs* 减少 *cnt[nums[left]]*。
+内层循环：如果发现 `pairs≥k`，说明子数组符合要求，右移左端点 `left`，先把 `cnt[nums[left]]` 减少一，然后把 `pairs` 减少 `cnt[nums[left]]`。
 
-内层循环结束后，*[left,right]* 这个子数组是不满足题目要求的，但在退出循环之前的最后一轮循环，*[left−1,right]* 是满足题目要求的。由于子数组越长，越能满足题目要求，所以除了 *[left−1,right]*，还有 *[left−2,right]*,*[left−3,right]*,…,*[0,right]* 都是满足要求的。
+内层循环结束后，`[left,right]` 这个子数组是不满足题目要求的，但在退出循环之前的最后一轮循环，`[left−1,right]` 是满足题目要求的。由于子数组越长，越能满足题目要求，所以除了 `[left−1,right]`，还有 `[left−2,right]`,`[left−3,right]`,…,`[0,right]` 都是满足要求的。
 
-也就是说，当右端点固定在 *right* 时，左端点在 *0,1,2,…,left−1* 的所有子数组都是满足要求的，这一共有 *left* 个。
+也就是说，当右端点固定在 `right` 时，左端点在 `0,1,2,…,left−1` 的所有子数组都是满足要求的，这一共有 `left` 个。
 
 #### 算法实现
 
@@ -280,23 +283,23 @@ public:
 
 #### 参考思路 来源：[寂](https://leetcode.cn/u/zen-poincarer1r/)
 
-我们要求的是恰好有 *k* 个不同整数的子数组数量。
+我们要求的是恰好有 `k` 个不同整数的子数组数量。
 
-先思考：如果能快速求出「至多 *k* 个不同整数」的子数组数量，再减去「至多 *k−1* 个不同整数」的子数组数量，得到的就是「恰好 *k* 个不同整数」的子数组数量。
+先思考：如果能快速求出「至多 `k` 个不同整数」的子数组数量，再减去「至多 `k−1` 个不同整数」的子数组数量，得到的就是「恰好 `k` 个不同整数」的子数组数量。
 
 所以问题变成：
 
-- 如何用滑动窗口求出「至多 *k* 个不同整数」的子数组数量？
+- 如何用滑动窗口求出「至多 `k` 个不同整数」的子数组数量？
 
 具体做法：
 
 - 用一个哈希表（或数组）统计窗口内的整数出现次数。
 
-- 右指针 *r* 向右扩展，如果新元素第一次出现，就让不同整数数目 +1。
+- 右指针 `r` 向右扩展，如果新元素第一次出现，就让不同整数数目 +1。
 
-- 当不同整数超过 *k* 时，移动左指针 l 缩小窗口，直到窗口合法。
+- 当不同整数超过 `k` 时，移动左指针 l 缩小窗口，直到窗口合法。
 
-- 当窗口合法时，以 *r* 结尾的所有子数组 `[l, r], [l+1, r], ..., [r, r]` 都满足条件，一共有 *r−l+1* 个。
+- 当窗口合法时，以 `r` 结尾的所有子数组 `[l, r], [l+1, r], ..., [r, r]` 都满足条件，一共有 `r−l+1` 个。
 
 最后：
 
