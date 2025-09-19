@@ -1,5 +1,5 @@
 ---
-title: Mastering Sliding Window: Patterns, Tricks, and Real LeetCode Examples
+title: Mastering Sliding Window —— Patterns, Tricks, and Real LeetCode Examples
 author: lewisacid2021
 date: 2025-09-19 22:45:00 +0800
 categories: [Blogging,Algorithm]
