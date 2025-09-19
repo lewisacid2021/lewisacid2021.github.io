@@ -3,11 +3,11 @@ title: Mastering Sliding Window —— Patterns, Tricks, and Real LeetCode Examp
 author: lewisacid2021
 date: 2025-09-19 22:45:00 +0800
 categories: [Blogging,Algorithm]
-tags: [coding]
+tags: [Coding]
 description: >-
     A concise guide to sliding window techniques — fixed and variable size windows, key patterns, and common tricks for solving array and substring problems in O(n).
 image:
-  path: /assets/img/posts/slidingwindow.gif
+  path: /assets/img/posts/slidingwindow.gifC
   lqip: /assets/img/posts/slidingwindow.gif
   alt: Typical process of Sliding Window 
 ---
