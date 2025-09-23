@@ -62,6 +62,8 @@ description: >-
 即芯片，通过一系列特定的加工工艺，将*晶体管、二极管等有源器件和电阻电容*等无源器件，按照一定的电路互联，“集成”在一块*半导体单晶片*上，封装在一个外壳内，执行特定的*电路或系统功能。*
 {: .prompt-info }
 
+### IC的分类
+
 ![img-description](/assets/img/posts/ic_classfy.png)
 
 
