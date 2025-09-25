@@ -106,7 +106,7 @@ description: >-
 - SoC：System-on-Chip 片上系统
 一个芯片就是一个系统，将系统的主要功能（处理器内核、存储器、外设等）集成到一个芯片上，由功能单一、固定的芯片，变成系统软硬件解决方案
 
-c
+![img-description](/assets/img/posts/ic_SoC.png)
 
 ### SoC的特点
 - 先有系统，才有SoC芯片（考虑集成更多功能）
