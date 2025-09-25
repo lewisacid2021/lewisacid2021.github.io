@@ -8,7 +8,7 @@ order: 4
 {: .prompt-tip }
 
 
-## 🏫 Institute
+# 🏫 Institute
 
 Beijing University of Posts and Telecommunications (BUPT)
 
@@ -16,37 +16,37 @@ School of Integrated Circuits
 
 Member of the [EDA Team](https://zhaokang-lab.github.io/)
 
-## 🎓 Education
+# 🎓 Education
 
 M.S. in Integrated Circuit Engineering, BUPT (in progress)
 
 B.S. in Computer Science and Technology, BUPT
 
-## 📖 Publication
+# 📖 Publication
 
 - [[ISEDA]](https://www.eda2.com/iseda/index.html) **Luming Wang**, Fangli Liu, Zichao Ling, Zheqin Cao, Yixin Xuan, Jianwang Zhai, and Kang Zhao. “Simulation and Exploration for Multi-Chiplet Systems using Open-Source Tools and Heuristic Algorithm,” Proc. International Symposium on Electronic Design Automation (ISEDA), Hong Kong, May 2025. [[pdf]](https://lewisacid2021.github.io/assets/paper/2025_ISEDA_WangLuming.pdf)
 
-## 🔍 Research Interests
+# 🔍 Research Interests
 
-### High-Performance Computing
+## High-Performance Computing
 
 - CUDA programming
 
 - GPU acceleration
 
-### Compiler & Systems
+## Compiler & Systems
 
 - LLVM infrastructure
 
 - Compiler optimizations
 
-### Artificial Intelligence
+## Artificial Intelligence
 
 - AI algorithms
 
 - Large Language Models (LLMs)
 
-### Electronic Design Automation (EDA)
+## Electronic Design Automation (EDA)
 
 - OpenROAD
 
@@ -54,7 +54,7 @@ B.S. in Computer Science and Technology, BUPT
 
 - Open-source EDA toolchains
 
-### Advanced Packaging & Chiplet Architectures
+## Advanced Packaging & Chiplet Architectures
 
 - 3D/2.5D integration
 
