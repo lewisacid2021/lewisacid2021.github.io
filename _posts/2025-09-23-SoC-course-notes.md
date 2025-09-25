@@ -1,15 +1,15 @@
 ---
 title: Analysis and Design of System-on-Chip——Course Notes
 author: lewisacid2021
-date: 2025-09-20 02:20:00 +0800
+date: 2025-09-23 12:20:00 +0800
 categories: [Blogging,SoC,Course]
-tags: [Notes]
+tags: [SoC]
 description: >-
     Personal Learning Notes for the Course: Analysis and Design of System-on-Chip at BUPT.
-# image:
-#   path: /assets/img/posts/iEDA_flow.png
-#   lqip: /assets/img/posts/iEDA_flow.png
-#   alt: iEDA Tool Set Flow
+image:
+  path: /assets/img/posts/ic_SoC.png
+  lqip: /assets/img/posts/ic_SoC.png
+  alt: SoC System-on-Chip Architecture
 ---
 
 > SoC课笔记，简略PPT，扩展重要内容
