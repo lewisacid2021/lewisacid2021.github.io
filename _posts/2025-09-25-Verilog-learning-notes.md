@@ -95,6 +95,51 @@ Verilog HDL 是一种常用的硬件描述语言，可以从系统级、电路�
 | trireg   | vectored| wait     | wand    | weak0   | weak1    | while    | wire     | xnor    | xor     |
 
 ### 数值
+-  Syntax for integer and real numbers(IEEE-1364-2001)
+```ebnf
+ number ::= (From Annex A - A.8.7)
+        decimal_number
+        | octal_number
+        | binary_number
+        | hex_number
+        | real_number
+ real_number ::=
+        unsigned_number. unsigned_number
+        | unsigned_number [ . unsigned_number ] exp [ sign ] unsigned_number
+ exp ::=e |E
+ decimal_number ::=
+        unsigned_number
+        | [ size ] decimal_base unsigned_number
+        | [ size ] decimal_base x_digit {_ }
+        | [ size ] decimal_base z_digit {_ }
+ binary_number ::=
+        [ size ] binary_base binary_value
+ octal_number ::=
+        [ size ] octal_base octal_value
+ hex_number ::=
+        [ size ] hex_base hex_value
+ sign ::=+ |
+size ::= non_zero_unsigned_number
+ non_zero_unsigned_numbera ::= non_zero_decimal_digit { _ | decimal_digit}
+ unsigned_numbera ::= decimal_digit {_ | decimal_digit }
+ binary_valuea ::= binary_digit {_ | binary_digit }
+ octal_valuea ::= octal_digit {_ | octal_digit }
+ hex_valuea ::= hex_digit {_ | hex_digit }
+ decimal_basea ::='[s|S]d | '[s|S]D
+ binary_basea ::='[s|S]b | '[s|S]B
+ octal_basea::='[s|S]o | '[s|S]O
+ hex_basea ::='[s|S]h | '[s|S]H
+ non_zero_decimal_digit ::=1 |2 |3 |4 |5 |6 |7 |8 |9
+ decimal_digit ::=0 |1 |2 |3 |4 |5 |6 |7 |8 |9
+ binary_digit ::= x_digit | z_digit |0 |1
+ octal_digit ::= x_digit | z_digit |0 |1 |2 |3 |4 |5 |6 |7
+ hex_digit ::=
+        x_digit | z_digit |0 |1 |2 |3 |4 |5 |6 |7 |8 |9
+        |a |b |c |d |e |f |A |B |C |D |E |F
+ x_digit ::=x |X
+ z_digit ::=z |Z |?
+```
+
 - Verilog HDL,有四种基本的逻辑数值状态，用数字或字符表达数字电路中传送的逻辑状态和存储信息。Verilog HDL逻辑数值中,x和z都不区分大小写
 
 | 状态                   | 说明                 |
@@ -121,4 +166,19 @@ Verilog HDL 是一种常用的硬件描述语言，可以从系统级、电路�
 其中，“+/-”是正数和负数标示;`size`指换算过后的二进制数的宽度;“'”为基数格式其中，表示的固有字符,该字符不能缺省,否则为非法表示形式;`base_format`是其基数符号;`number`是可以使用的数字字符集，形式上是相应进制格式下的一串数值。
 
 - 使用整数时需要注意的是:
-    1. 较长的数可用下划线分开
+    1. 较长的数可用下划线分开，提高可读性，本身并无意义，且下划线不能作为首字符
+    2. 数字未说明位宽的时候，默认32位
+    3. x或z代表的宽度取决于所用的进制，如二进制1位、八进制3位、十六进制4位
+    ```Verilog
+        8'b1011xxxx //等价于 8'hBx
+    ```
+    4. 若位宽未定义，则宽度默认为相应值中定义的位数
+    ```Verilog
+        'o642       //9位八进制数
+        'hBD        //8位十六进制数
+    ```
+    5. 若定义位宽比实际数位大，则左边用0补齐；最左位为x或z则相应用x或z在左边补齐
+    ```Verilog
+        10'b101     //左边补0, 0000000101
+        8'bz0x1     //左边补z, zzzzz0x1
+    ```
