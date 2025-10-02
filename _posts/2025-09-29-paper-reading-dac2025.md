@@ -350,3 +350,5 @@ EDA方向的论文，可以学习这种 跨层次建模 + 联合优化 的组织
 EDA方向，特别是涉及 3DIC设计、Chiplet集成、热建模、存储架构优化，这篇论文能提供非常好的参考文献和研究方向切入点。
 
 它也说明了 EDA 研究中 chiplet-aware, memory-aware, thermal-aware 工具的潜力。
+
+## AARC: Automated Affinity-aware Resource Configuration for Serverless Workflows
