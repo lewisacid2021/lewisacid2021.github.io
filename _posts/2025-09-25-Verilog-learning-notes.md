@@ -8,7 +8,7 @@ description: >-
     Personal Learning Notes of Verilog HDL and System Verilog.
 ---
 
-> 强烈推荐所有Verilog初学者在[HDLBits](https://hdlbits.01xz.net/wiki/Main_Page)上实践学习!!!!
+> 强烈推荐所有Verilog初学者在[HDLBits](https://hdlbits.01xz.net/wiki/Main_Page)以及github仓库[sv-tutorial](https://github.com/ARC-Lab-UF/sv-tutorial/tree/main)上实践学习!!!!
 {: .prompt-tip }
 
 # Verilog HDL 概述
