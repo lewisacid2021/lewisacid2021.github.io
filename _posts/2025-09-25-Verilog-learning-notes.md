@@ -8,6 +8,9 @@ description: >-
     Personal Learning Notes of Verilog HDL and System Verilog.
 ---
 
+> 强烈推荐所有Verilog初学者在[HDLBits](https://hdlbits.01xz.net/wiki/Main_Page)上实践学习!!!!
+{: .prompt-tip }
+
 # Verilog HDL 概述
 > 随着**集成电路规模的迅速扩大和复杂度的不断提高**，芯片设计和制造成本不断增加，设计、测试和制造工艺中的环节亦随之增多，相应的设计过程变得越来越复杂，因此，设计者希望通过某种手段提高数字集成电路的**设计、验证的效率和可靠性**。
 
